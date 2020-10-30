@@ -1,5 +1,6 @@
 import SnowflakeApp from '../components/SnowflakeApp'
 
-export default () => <div>
+export default () => 
+<div>
   <SnowflakeApp />
 </div>
