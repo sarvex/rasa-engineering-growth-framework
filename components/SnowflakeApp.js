@@ -121,6 +121,7 @@ class SnowflakeApp extends React.Component<Props, SnowflakeAppState> {
             <Wordmark />
           </a>
         </div>
+        <h1>Engineering growth framework at Rasa (WIP - subject to changes)</h1>
         <div style={{display: 'flex'}}>
           <div style={{flex: 1}}>
             <InstructionsPanel />
