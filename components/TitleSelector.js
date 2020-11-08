@@ -1,10 +1,10 @@
 // @flow
 
 import React from "react";
-import { titles } from "../constants";
+import { titles, titleIds } from "../constants";
 
 type Props = {
-  currentTitle: string,
+  currentTitleId: string,
   setTitleFn: (string) => void,
 };
 
@@ -12,9 +12,9 @@ class TitleSelector extends React.Component<Props> {
   render() {
     return (
       <div>
-        <h3>Requirements:</h3>
+        <h3 style={{display: `inline-block`, marginRight: `8px`}}>Indicate baseline requirements:</h3>
         <select
-          value={this.props.currentTitle}
+          value={this.props.currentTitleId}
           onChange={(e) => this.props.setTitleFn(e.target.value)}
         >
           <style jsx>{`
@@ -25,8 +25,8 @@ class TitleSelector extends React.Component<Props> {
               min-width: 300px;
             }
           `}</style>
-          {titles.map((title) => (
-            <option key={title}>{title}</option>
+          {titleIds.map((titleId) => (
+              <option key={titleId} value={titleId}>{titles[titleId].displayName}</option>
           ))}
         </select>
       </div>

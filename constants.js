@@ -1,5 +1,6 @@
 // @flow
 import * as d3 from "d3";
+import InstructionsPanel from "./components/InstructionsPanel";
 
 export type TrackId =
   | "DESIGN"
@@ -53,6 +54,31 @@ type Tracks = {|
   PRODUCT_ACUMEN: Track,
   PRIORITIZATION: Track,
 |};
+
+type Title = {
+  displayName: String,
+  requirements: MilestoneMap,
+}
+
+type Titles = {|
+  JUNIOR_SOFTWARE_ENGINEER: Title,
+  SOFTWARE_ENGINEER: Title,
+  FRONTEND_ENGINEER: Title,
+  FULLSTACK_ENGINEER: Title,
+  BACKEND_ENGINEER: Title,
+  SENIOR_SOFTWARE_ENGINEER: Title,
+  STAFF_ENGINEER: Title,
+|};
+
+export type TitleId =
+  | "JUNIOR_SOFTWARE_ENGINEER"
+  | "SOFTWARE_ENGINEER"
+  | "FRONTEND_ENGINEER"
+  | "FULLSTACK_ENGINEER"
+  | "EXPECTATION_MANAGEMENT"
+  | "BACKEND_ENGINEER"
+  | "SENIOR_SOFTWARE_ENGINEER"
+  | "STAFF_ENGINEER";
 
 export const tracks: Tracks = {
   DESIGN: {
@@ -492,12 +518,143 @@ export const categoryColorScale = d3
   .domain(categoryIds)
   .range(["#D923BA", "#491BF2", "#8E72F2", "#E1DCF2", "#77F2F2"]);
 
-export const titles = [
-  "-",
-  "Junior Software Engineer",
-  "Software Engineer",
-  "Frontend Engineer",
-  "Backend Engineer",
-  "Senior Software Engineer",
-  "Staff Engineer",
-];
+export const titles: Titles = {
+  DEFAULT: {
+    displayName: "Default",
+    requirements: {
+      DESIGN: 4,
+      DOMAIN_EXPERTISE: 4,
+      DELIVERY: 4,
+      SCOPING: 4,
+      EXPECTATION_MANAGEMENT: 4,
+      CORE_COLLABORATION_SKILLS: 4,
+      EQUITY_AND_INCLUSION: 4,
+      MENTORSHIP: 4,
+      RECRUITING: 4,
+      OUTREACH: 4,
+      PRODUCT_ACUMEN: 4,
+      PRIORITIZATION: 4,
+    },
+  },
+  JUNIOR_SOFTWARE_ENGINEER: {
+    displayName: "Junior Software Engineer",
+    requirements: {
+      DESIGN: 1,
+      DOMAIN_EXPERTISE: 1,
+      DELIVERY: 1,
+      SCOPING: 1,
+      EXPECTATION_MANAGEMENT: 1,
+      CORE_COLLABORATION_SKILLS: 1,
+      EQUITY_AND_INCLUSION: 1,
+      MENTORSHIP: 1,
+      RECRUITING: 0,
+      OUTREACH: 0,
+      PRODUCT_ACUMEN: 1,
+      PRIORITIZATION: 1,
+    },
+  },
+  SOFTWARE_ENGINEER: {
+    displayName: "Software Engineer",
+    requirements: {
+      DESIGN: 2,
+      DOMAIN_EXPERTISE: 2,
+      DELIVERY: 2,
+      SCOPING: 2,
+      EXPECTATION_MANAGEMENT: 2,
+      CORE_COLLABORATION_SKILLS: 2,
+      EQUITY_AND_INCLUSION: 2,
+      MENTORSHIP: 2,
+      RECRUITING: 1,
+      OUTREACH: 1,
+      PRODUCT_ACUMEN: 2,
+      PRIORITIZATION: 2,
+    },
+  },
+  FRONTEND_ENGINEER: {
+    displayName: "Frontend Engineer",
+    requirements: {
+      DESIGN: 1,
+      DOMAIN_EXPERTISE: 2,
+      DELIVERY: 2,
+      SCOPING: 2,
+      EXPECTATION_MANAGEMENT: 2,
+      CORE_COLLABORATION_SKILLS: 2,
+      EQUITY_AND_INCLUSION: 2,
+      MENTORSHIP: 2,
+      RECRUITING: 1,
+      OUTREACH: 1,
+      PRODUCT_ACUMEN: 2,
+      PRIORITIZATION: 2,
+    },
+  },
+  FULLSTACK_ENGINEER: {
+    displayName: "Fullstack Engineer",
+    requirements: {
+      DESIGN: 2,
+      DOMAIN_EXPERTISE: 2,
+      DELIVERY: 2,
+      SCOPING: 2,
+      EXPECTATION_MANAGEMENT: 2,
+      CORE_COLLABORATION_SKILLS: 2,
+      EQUITY_AND_INCLUSION: 2,
+      MENTORSHIP: 2,
+      RECRUITING: 1,
+      OUTREACH: 1,
+      PRODUCT_ACUMEN: 2,
+      PRIORITIZATION: 2,
+    },
+  },
+  BACKEND_ENGINEER: {
+    displayName: "Backend Engineer",
+    requirements: {
+      DESIGN: 2,
+      DOMAIN_EXPERTISE: 2,
+      DELIVERY: 2,
+      SCOPING: 2,
+      EXPECTATION_MANAGEMENT: 2,
+      CORE_COLLABORATION_SKILLS: 2,
+      EQUITY_AND_INCLUSION: 2,
+      MENTORSHIP: 2,
+      RECRUITING: 1,
+      OUTREACH: 1,
+      PRODUCT_ACUMEN: 1,
+      PRIORITIZATION: 2,
+    },
+  },
+  SENIOR_SOFTWARE_ENGINEER: {
+    displayName: "Senior Software Engineer",
+    requirements: {
+      DESIGN: 2,
+      DOMAIN_EXPERTISE: 3,
+      DELIVERY: 3,
+      SCOPING: 3,
+      EXPECTATION_MANAGEMENT: 3,
+      CORE_COLLABORATION_SKILLS: 3,
+      EQUITY_AND_INCLUSION: 3,
+      MENTORSHIP: 3,
+      RECRUITING: 1,
+      OUTREACH: 1,
+      PRODUCT_ACUMEN: 3,
+      PRIORITIZATION: 3,
+    },
+  },
+  STAFF_ENGINEER: {
+    displayName: "Staff Engineer",
+    requirements: {
+      DESIGN: 4,
+      DOMAIN_EXPERTISE: 4,
+      DELIVERY: 4,
+      SCOPING: 4,
+      EXPECTATION_MANAGEMENT: 4,
+      CORE_COLLABORATION_SKILLS: 4,
+      EQUITY_AND_INCLUSION: 3,
+      MENTORSHIP: 4,
+      RECRUITING: 2,
+      OUTREACH: 1,
+      PRODUCT_ACUMEN: 4,
+      PRIORITIZATION: 4,
+    },
+  },
+};
+
+export const titleIds: Title[] = Object.keys(titles);

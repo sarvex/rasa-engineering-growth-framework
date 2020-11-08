@@ -5,7 +5,7 @@ import React from 'react'
 class InstructionsPanel extends React.Component<Props> {
   render() {
     return (
-      <div>
+      <div style={{marginBottom: `80px`}}>
         <h3>How to use the framework</h3>
         <p>
           Engineers contribute to Rasa with a diverse skillset. We aim to reduce biases by having a clear framework 

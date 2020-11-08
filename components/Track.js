@@ -1,12 +1,13 @@
 // @flow
 
-import { tracks, milestones, categoryColorScale } from "../constants";
+import { tracks, milestones, categoryColorScale, titles } from "../constants";
 import React from "react";
 import type { MilestoneMap, TrackId, Milestone } from "../constants";
 
 type Props = {
   milestoneByTrack: MilestoneMap,
   trackId: TrackId,
+  titleId: string,
   handleTrackMilestoneChangeFn: (TrackId, Milestone) => void,
 };
 
@@ -15,6 +16,9 @@ class Track extends React.Component<Props> {
     const track = tracks[this.props.trackId];
     const currentMilestoneId = this.props.milestoneByTrack[this.props.trackId];
     const currentMilestone = track.milestones[currentMilestoneId - 1];
+    const titleRequiements = titles[this.props.titleId].requirements;
+    const milestoneByTrackRequirement = titleRequiements[this.props.trackId];
+
     return (
       <div className="track">
         <style jsx>{`
@@ -57,7 +61,8 @@ class Track extends React.Component<Props> {
                 .slice()
                 .reverse()
                 .map((milestone) => {
-                  const isMet = milestone <= currentMilestoneId;
+                  const isMilestoneMet = milestone <= currentMilestoneId;
+                  const isRequirement = milestone <= milestoneByTrackRequirement;
                   return (
                     <tr key={milestone}>
                       <td
@@ -71,13 +76,17 @@ class Track extends React.Component<Props> {
                           border: `3px solid ${
                             milestone === currentMilestoneId
                               ? "#000"
-                              : isMet
+                              : isMilestoneMet
                               ? categoryColorScale(track.category)
                               : "#eee"
                           }`,
-                          background: isMet
+                          //background: this.generateBackgroundColor(isMilestoneMet, isRequirement, track)
+                          background: isMilestoneMet
                             ? categoryColorScale(track.category)
                             : undefined,
+                          opacity: isRequirement
+                            ? 1
+                            : 0.5
                         }}
                       >
                         {milestone}
@@ -101,6 +110,12 @@ class Track extends React.Component<Props> {
         </div>
       </div>
     );
+  }
+  generateBackgroundColor(isMilestoneMet, isRequirementMet, track) {
+    if (isMilestoneMet) {
+      return categoryColorScale(track.category);
+    }
+    return undefined;
   }
 }
 
