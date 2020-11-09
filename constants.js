@@ -9,8 +9,12 @@ export type TrackId =
   | "SCOPING"
   | "EXPECTATION_MANAGEMENT"
   | "CORE_COLLABORATION_SKILLS"
-  | "EQUITY_AND_INCLUSION";
-"MENTORSHIP" | "OUTREACH" | "RECRUITING" | "PRODUCT_ACUMEN" | "PRIORITIZATION";
+  | "EQUITY_AND_INCLUSION"
+  | "MENTORSHIP"
+  | "OUTREACH"
+  | "RECRUITING"
+  | "PRODUCT_ACUMEN"
+  | "PRIORITIZATION";
 export type Milestone = 0 | 1 | 2 | 3 | 4;
 
 export type MilestoneMap = {
@@ -58,7 +62,7 @@ type Tracks = {|
 type Title = {
   displayName: String,
   requirements: MilestoneMap,
-}
+};
 
 type Titles = {|
   JUNIOR_SOFTWARE_ENGINEER: Title,
@@ -80,10 +84,17 @@ export type TitleId =
   | "SENIOR_SOFTWARE_ENGINEER"
   | "STAFF_ENGINEER";
 
+export type VerticalId =
+  | "TECHNICAL_SKILLS"
+  | "EXECUTION"
+  | "TEAMWORK"
+  | "INFLUENCE"
+  | "PRODUCT_SENSE";
+
 export const tracks: Tracks = {
   DESIGN: {
     displayName: "Design",
-    category: "A",
+    category: "TECHNICAL_SKILLS",
     description: "Architect simple solutions even if the use case is complex.",
     milestones: [
       {
@@ -120,7 +131,7 @@ export const tracks: Tracks = {
 
   DOMAIN_EXPERTISE: {
     displayName: "Domain Expertise",
-    category: "A",
+    category: "TECHNICAL_SKILLS",
     description:
       "Develop expertise in your field and apply that to the Rasa code base.",
     milestones: [
@@ -158,7 +169,7 @@ export const tracks: Tracks = {
 
   DELIVERY: {
     displayName: "Delivery",
-    category: "B",
+    category: "EXECUTION",
     description: "Deliver on commitments in a realistic and timely manner.",
     milestones: [
       {
@@ -201,7 +212,7 @@ export const tracks: Tracks = {
 
   SCOPING: {
     displayName: "Scoping",
-    category: "B",
+    category: "EXECUTION",
     description:
       "Break up work into actionable chunks so that you can parallelize the work and iterate quickly.",
     milestones: [
@@ -229,7 +240,7 @@ export const tracks: Tracks = {
 
   EXPECTATION_MANAGEMENT: {
     displayName: "Expectation management",
-    category: "C",
+    category: "TEAMWORK",
     description:
       "Obtaining and surfacing the right amount of information to the right people at the right time.",
     milestones: [
@@ -260,7 +271,7 @@ export const tracks: Tracks = {
 
   CORE_COLLABORATION_SKILLS: {
     displayName: "Core collaboration skills",
-    category: "C",
+    category: "TEAMWORK",
     description:
       "Be honest: share your opinions in an open and respectful manner to help the team and Rasa succeed.",
     milestones: [
@@ -295,7 +306,7 @@ export const tracks: Tracks = {
 
   EQUITY_AND_INCLUSION: {
     displayName: "Equity and inclusion",
-    category: "C",
+    category: "TEAMWORK",
     description:
       "Respect is our code: diversity, equity and inclusion is the core of our mission. (Can opt out from IV)",
     milestones: [
@@ -336,7 +347,7 @@ export const tracks: Tracks = {
 
   MENTORSHIP: {
     displayName: "Mentorship",
-    category: "D",
+    category: "INFLUENCE",
     description:
       "Challenge yourself and your team to be exceptional: share your learnings and knowledge to raise the bar.",
     milestones: [
@@ -374,7 +385,7 @@ export const tracks: Tracks = {
 
   RECRUITING: {
     displayName: "Recruiting",
-    category: "D",
+    category: "INFLUENCE",
     description:
       "Help Rasa grow by bringing in more Rasas. (Can opt out from III)",
     milestones: [
@@ -407,7 +418,7 @@ export const tracks: Tracks = {
 
   OUTREACH: {
     displayName: "Outreach",
-    category: "D",
+    category: "INFLUENCE",
     description: "Be an ambassador for Rasa. (Can opt out)",
     milestones: [
       {
@@ -447,7 +458,7 @@ export const tracks: Tracks = {
 
   PRODUCT_ACUMEN: {
     displayName: "Product acumen",
-    category: "E",
+    category: "PRODUCT_SENSE",
     description:
       "Think for yourself: challenge our strategies and be an advisor for the product org.",
     milestones: [
@@ -481,7 +492,7 @@ export const tracks: Tracks = {
 
   PRIORITIZATION: {
     displayName: "Prioritization",
-    category: "E",
+    category: "PRODUCT_SENSE",
     description: "Prioritize and deliver work to create the most impact.",
     milestones: [
       {
