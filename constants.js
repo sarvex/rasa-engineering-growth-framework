@@ -84,12 +84,18 @@ export type TitleId =
   | "SENIOR_SOFTWARE_ENGINEER"
   | "STAFF_ENGINEER";
 
-export type VerticalId =
-  | "TECHNICAL_SKILLS"
-  | "EXECUTION"
-  | "TEAMWORK"
-  | "INFLUENCE"
-  | "PRODUCT_SENSE";
+type Vertical = {
+  displayName: String,
+  numAreas: Number,
+}
+
+type Verticals = {|
+  TECHNICAL_SKILLS: Vertical,
+  EXECUTION: Vertical,
+  TEAMWORK: Vertical,
+  INFLUENCE: Vertical,
+  PRODUCT_SENSE: Vertical,
+|}
 
 export const tracks: Tracks = {
   DESIGN: {
@@ -105,20 +111,24 @@ export const tracks: Tracks = {
       {
         summary:
           "Utilises abstractions and code isolation effectively. Maintain consistency across the code base and handles edge cases. Code review their own work and regularly review their teammates' work.",
-        examples: ["Leave the code base in a better place than before."],
+        examples: [
+          "Leave the code base in a better place than before.",
+          "Write the scoping document and implement support for rules in Rasa X.",
+          "Come up with solutions to implementing HTTPS for IVC.",
+        ],
       },
       {
         summary:
           "Design software that are maintainable and easy to extend. The software can withstand the test of time.",
         examples: [
-          "Implement systems that enable better testing.",
-          "Refactor a complex workflow to reduce dependencies.",
-          "Help others improve through code reviews, thorough documentation and technical guidance.",
+          "Implement a testing framework that reduces the team's time fixing bugs.",
+          "Reduce Rasa - Rasa X code coupling to optimize for long-term delivery speed.",
+          "Design Rasa X workspaces, the code doesn't require major refactoring after the project.",
         ],
       },
       {
         summary:
-          "A record of designing stable, maintainable, scalable code that is product-critical. Can articulate tradeoffs across the architecture owned by the squad.",
+          "A record of designing stable, maintainable, scalable code that is product-critical. Can articulate tradeoffs across the architecture owned by the squad. This level requires evaluation that spans across multiple quarters.",
         examples: [
           "Turnaround: identify blockers for the product to be successful and architect a plan to resolve them.",
           "Accelaterated growth: can quickly identify bottlenecks that will happen and propose a design to tackle scalability and performance. Even when shortcuts are necessary, they should be documented and followed up.",
@@ -133,7 +143,7 @@ export const tracks: Tracks = {
     displayName: "Domain Expertise",
     category: "TECHNICAL_SKILLS",
     description:
-      "Develop expertise in your field and apply that to the Rasa code base.",
+      "Develop expertise in your field(s) and apply that to the Rasa code base.",
     milestones: [
       {
         summary:
@@ -145,6 +155,8 @@ export const tracks: Tracks = {
           "Apply the principles of the programming language and framework they are working with. Demonstrate knowledge on industry trends.",
         examples: [
           "Familiar with common pitfalls in cross-browser implementations.",
+          "Familiar with Python developer best practices (e.g. Zen) and follow them.",
+          "Aware of system-level implications when writing code supposed to be executed on multiple platforms.",
         ],
       },
       {
@@ -153,6 +165,7 @@ export const tracks: Tracks = {
         examples: [
           "Provide technical advice and weight in on technical decisions.",
           "We've hit a roadblock on our implementation of our inline table editor. You are researching technologies, digesting the results for the team to chime in on and drive the discussion to a conclusion.",
+          "Help others improve through code reviews, thorough documentation and technical guidance.",
         ],
       },
       {
@@ -191,7 +204,7 @@ export const tracks: Tracks = {
       },
       {
         summary:
-          "Delivers work given (yet) unclear requirements within the context of their team. ",
+          "Delivers work given (yet) unclear requirements within the context of their team. Make sound decisions even in stressful scenarios and with little information.",
         examples: [
           "Able to reduce the complexity of projects and processes to meet the product need.",
           "When the situation calls for a fast delivery, execute on that and wrap up the improvements later.",
@@ -200,7 +213,7 @@ export const tracks: Tracks = {
       },
       {
         summary:
-          "Able to execute complex designs. Foresee impediments, mitigate them proactively before they become emergencies.",
+          "Able to execute complex designs. Foresee roadblocks and risks, mitigate them proactively before they become emergencies.",
         examples: [
           "Turnaround: can jump into unchartered areas and gain expertise quickly. Turn a dysfunctional team around.",
           "Accelerated growth: help the team deliver and meet their goals. Do anything that is necessary to achieve that.",
@@ -219,21 +232,31 @@ export const tracks: Tracks = {
       {
         summary:
           "Able to take well-defined issues and publish small pull requests.",
-        examples: [],
+        examples: [
+          "Work on one or several tasks inside an Implementation proposal.",
+        ],
       },
       {
         summary:
           "Able to break features down into actionable issues so that they can be parallelized by the team.",
-        examples: [],
+        examples: [
+          "Write Implementation proposals by gathering feedback from multiple stakeholders, and hand over parts of the implementation to the team."
+        ],
       },
       {
         summary:
           "Stage projects into well-defined milestones as minimal viable products to get early user feedback. Coordinates development and monitors dependencies in the product and in other teams.",
-        examples: ["Scope out the work for a major release."],
+        examples: [
+          "Scope out the work for a minor Rasa Open Source release.",
+          "Contribute to early discussions on a new feature and propose technical shortcuts to validate assumptions.",
+        ],
       },
       {
         summary: "Turn product and business problems into an executable plan.",
-        examples: [],
+        examples: [
+          "Scope out the work for a major Rasa Open Source release.",
+          "Plan the rollout of introducing telemetry to both Rasa X and Rasa OSS.",
+        ],
       },
     ],
   },
@@ -254,6 +277,7 @@ export const tracks: Tracks = {
           "Escalates any blockers, delays, and cost ballooning to their squad daily. Align expectations within the team.",
         examples: [
           "Clarify ambiguities with designers and / or product managers before working on a feature.",
+          "During implementation, communicate to stakeholders about significant delays.",
         ],
       },
       {
@@ -264,7 +288,9 @@ export const tracks: Tracks = {
       {
         summary:
           "Invest in long-term relationships with other teams at Rasa to keep your team's goals in their plans. Communicate the team's long-term plan to other stakeholders to create alignment.",
-        examples: [],
+        examples: [
+          "Represent engineering and explain ROI of large-scale technical projects to other departments.",
+        ],
       },
     ],
   },
@@ -282,14 +308,14 @@ export const tracks: Tracks = {
       },
       {
         summary:
-          "Express opinions in the team and to teammates in an open, respectful and emphathetic manner. After a consensus is reached, disagree and commit.",
+          "Express opinions in the team and to teammates in an open, respectful and emphathetic manner. After a consensus is reached, commit even if they disagree.",
         examples: [
           "Provide input on discussions around team practices and processes. Alerts the team of current process related issues.",
         ],
       },
       {
         summary:
-          "Able to mediate discussions in a team. Able to de-escalate disagreements and resolve them with concensus. Resolve conflicts with teammates with compassion, patience and respect.",
+          "Able to mediate discussions in a team. Take initiative to de-escalate conflicts with compassion, patience and respect. ",
         examples: [
           "Lead discussions around team process improvements, get consensus and buy in to execute.",
         ],
@@ -298,7 +324,7 @@ export const tracks: Tracks = {
         summary:
           "Maintain a pulse on teams' morale and help with retention. Able to motivate the teams to achieve their goals. Able to drive organizational changes.",
         examples: [
-          "Come up with re-org plans to support with Rasa's growth. Get manager and engineers' buy-in.",
+          "Establish a baseline of performance across teams and stacks. Got buy in from engineers from all teams to follow the standard.",
         ],
       },
     ],
@@ -336,10 +362,11 @@ export const tracks: Tracks = {
       },
       {
         summary:
-          "Help create an engaging, inclusive, and equitable environment at Rasa and beyond.",
+          "Help create an engaging, inclusive, and equitable environment at a company-wide level and beyond.",
         examples: [
-          "Advocate for the needs of the team and groups members at Rasa.",
+          "Actively participate in the DEI group to review our DEI strategy at Rasa.",
           "Lead PyLadies and contribute actively to help underrepresented minorities succeed in the industry.",
+          "Start and run an employee resource group at Rasa.",
         ],
       },
     ],
@@ -354,13 +381,15 @@ export const tracks: Tracks = {
       {
         summary:
           "Seek out mentorship and help to grow their own experience. Share their learnings regularly with the team.",
-        examples: [],
+        examples: [
+          "Ask their mentor for feedback during a 1:1 and take action to improve based on the feedback.",
+        ],
       },
       {
         summary:
           "Make themselves available for support and advice for more junior members. Able to give technical feedback and share knowledge with teammates. Able to give behavioral feedback to mentees with manager's support.",
         examples: [
-          "Introduce React-saga patterns to an engineer through reviews, pair-programming and discussions.",
+          "Introduce Redux-saga patterns to an engineer through reviews, pair-programming and discussions.",
         ],
       },
       {
@@ -370,6 +399,7 @@ export const tracks: Tracks = {
           "Help mentee to find out their strengths and weaknesses.",
           "Discuss career options and areas of interest formally.",
           "Guide teammates to come up with solutions instead of telling them the answer.",
+          "Break down complex concepts into simple explanations.",
         ],
       },
       {
@@ -403,15 +433,19 @@ export const tracks: Tracks = {
       {
         summary: "Contribute and improve the recruiting process.",
         examples: [
-          "Help interviewer trainees calibrate their feedback.",
+          "Shadow new interviewers and help them calibrate their feedback.",
           "Write new take-home tests that meet the quality bar.",
           "Bring in candidates into the pipeline proactively with a high conversion rate.",
+          "Suggest putting our job post on X platform to get more applicants.",
         ],
       },
       {
         summary:
           "Set recruitment and onboarding strategies. Invest in long-term relationships for critical roles.",
-        examples: [],
+        examples: [
+          "Set up a structured interview process to reduce bias in recruiting.",
+          "Have a wide network, help Rasa close mission-critical roles like Head of Product.",
+        ],
       },
     ],
   },
@@ -426,7 +460,6 @@ export const tracks: Tracks = {
           "Represents Rasa externally. Show interest in Rasa's achievements.",
         examples: [
           "Support and encourage participation from the open source community.",
-          "Like Rasa's social media posts.",
           "Attend Rasa-hosted events and interact with other participants.",
         ],
       },
@@ -471,16 +504,14 @@ export const tracks: Tracks = {
         summary:
           "Know how their squad's product features fit into the larger product scope. Understand a squad's domain and drive feature proposals along with product and / or design. Have the users in mind when building features.",
         examples: [
-          "Evaluate internal or open source feature requests and argue why they should not be made.",
+          "Evaluate internal or open source feature requests with respect to our OKRs and blockers, and argue why they should not be made.",
           "Identify all the paths users can take in the code. Work with designer to account for all the use cases.",
         ],
       },
       {
         summary:
           "Provide high-level product input and evaluate tradeoffs based on this insight. Continuously evaluates proposed product features with respect to better alternatives unknown to product management. Optimize for the users' need.",
-        examples: [
-          "Evaluate Open Source contributions with respect to the Product Roadmap and their long term impact on the product development. Anticipate opportunities and roadblocks.",
-        ],
+        examples: [],
       },
       {
         summary:
@@ -510,8 +541,10 @@ export const tracks: Tracks = {
         examples: [],
       },
       {
-        summary: "Prioritize products and strategies on a company level.",
-        examples: [],
+        summary: "Prioritize products and strategies on a company level. Balance hands-on work (>30%) and other work that creates impact.",
+        examples: [
+          "Navigate through organization dynamics. Work with product / business units to prioritize projects that balance Rasa's short-term and long-term success. Won't overly focus on the shiny new techs, also won't only focus on the long-term success."
+        ],
       },
     ],
   },
@@ -528,6 +561,31 @@ export const categoryColorScale = d3
   .scaleOrdinal()
   .domain(categoryIds)
   .range(["#D923BA", "#491BF2", "#8E72F2", "#E1DCF2", "#77F2F2"]);
+
+export const verticals: Verticals = {
+  TECHNICAL_SKILLS: {
+    displayName: "Technical skills",
+    numAreas: 2,
+  },
+  EXECUTION: {
+    displayName: "Execution",
+    numAreas: 2,
+  },
+  TEAMWORK: {
+    displayName: "Teamwork",
+    numAreas: 3,
+  },
+  INFLUENCE: {
+    displayName: "Influence",
+    numAreas: 3,
+  },
+  PRODUCT_SENSE: {
+    displayName: "Product sense",
+    numAreas: 2
+  }
+};
+
+export const verticalIds: Vertical[] = Object.keys(verticals);
 
 export const titles: Titles = {
   DEFAULT: {

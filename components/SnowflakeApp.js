@@ -131,10 +131,10 @@ class SnowflakeApp extends React.Component<Props, SnowflakeAppState> {
           </a>
         </div>
         <h1>Engineering growth framework at Rasa (WIP)</h1>
-        <TitleSelector
+        {/* <TitleSelector
           currentTitleId={this.state.focusedTitleId}
           setTitleFn={this.setTitleId.bind(this)}
-        />
+        /> */}
         <div style={{ display: "flex" }}>
           <div style={{ flex: 1 }}>
             <InstructionsPanel />
@@ -175,8 +175,12 @@ class SnowflakeApp extends React.Component<Props, SnowflakeAppState> {
           }
         />
         <div style={{ display: "flex", paddingBottom: "20px" }}>
-          <div style={{ flex: 1 }}>
-            Based on{" "}
+          <div style={{ flex: 1}}>
+            Made at Rasa 
+            <a href="https://rasa.com/" target="_blank">
+              <img src="static/favicon.ico" style={{width: `20px`, marginLeft: `3px`}}></img>
+            </a>. © Rasa Technologies Inc - 2020.
+            {" "}Based on{" "}
             <a href="https://github.com/Medium/snowflake" target="_blank">
               Medium's snowflake project
             </a>
