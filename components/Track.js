@@ -1,20 +1,24 @@
 // @flow
 
-import { tracks, milestones, categoryColorScale } from '../constants'
-import React from 'react'
-import type { MilestoneMap, TrackId, Milestone } from '../constants'
+import { tracks, milestones, categoryColorScale, titles } from "../constants";
+import React from "react";
+import type { MilestoneMap, TrackId, Milestone } from "../constants";
 
 type Props = {
   milestoneByTrack: MilestoneMap,
   trackId: TrackId,
-  handleTrackMilestoneChangeFn: (TrackId, Milestone) => void
-}
+  titleId: string,
+  handleTrackMilestoneChangeFn: (TrackId, Milestone) => void,
+};
 
 class Track extends React.Component<Props> {
   render() {
-    const track = tracks[this.props.trackId]
-    const currentMilestoneId = this.props.milestoneByTrack[this.props.trackId]
-    const currentMilestone = track.milestones[currentMilestoneId - 1]
+    const track = tracks[this.props.trackId];
+    const currentMilestoneId = this.props.milestoneByTrack[this.props.trackId];
+    const currentMilestone = track.milestones[currentMilestoneId - 1];
+    const titleRequiements = titles[this.props.titleId].requirements;
+    const milestoneByTrackRequirement = titleRequiements[this.props.trackId];
+
     return (
       <div className="track">
         <style jsx>{`
@@ -50,32 +54,52 @@ class Track extends React.Component<Props> {
         `}</style>
         <h2>{track.displayName}</h2>
         <p className="track-description">{track.description}</p>
-        <div style={{display: 'flex'}}>
-          <table style={{flex: 0, marginRight: 50}}>
+        <div style={{ display: "flex" }}>
+          <table style={{ flex: 0, marginRight: 50 }}>
             <tbody>
-              {milestones.slice().reverse().map((milestone) => {
-                const isMet = milestone <= currentMilestoneId
-                return (
-                  <tr key={milestone}>
-                    <td onClick={() => this.props.handleTrackMilestoneChangeFn(this.props.trackId, milestone)}
-                        style={{border: `4px solid ${milestone === currentMilestoneId ? '#000' : isMet ? categoryColorScale(track.category) : '#eee'}`, background: isMet ? categoryColorScale(track.category) : undefined}}>
-                      {milestone}
-                    </td>
-                  </tr>
-                )
-              })}
+              {milestones
+                .slice()
+                .reverse()
+                .map((milestone) => {
+                  const isMilestoneMet = milestone <= currentMilestoneId;
+                  const isRequirement = milestone <= milestoneByTrackRequirement;
+                  return (
+                    <tr key={milestone}>
+                      <td
+                        onClick={() =>
+                          this.props.handleTrackMilestoneChangeFn(
+                            this.props.trackId,
+                            milestone
+                          )
+                        }
+                        style={{
+                          border: `3px solid ${
+                            milestone === currentMilestoneId
+                              ? "#000"
+                              : isMilestoneMet
+                              ? categoryColorScale(track.category)
+                              : "#eee"
+                          }`,
+                          //background: this.generateBackgroundColor(isMilestoneMet, isRequirement, track)
+                          background: isMilestoneMet
+                            ? categoryColorScale(track.category)
+                            : undefined,
+                          opacity: isRequirement
+                            ? 1
+                            : 0.5
+                        }}
+                      >
+                        {milestone}
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
           {currentMilestone ? (
-            <div style={{flex: 1}}>
+            <div style={{ flex: 1 }}>
               <h3>{currentMilestone.summary}</h3>
-              <h4>Example behaviors:</h4>
-              <ul>
-                {currentMilestone.signals.map((signal, i) => (
-                  <li key={i}>{signal}</li>
-                ))}
-              </ul>
-              <h4>Example tasks:</h4>
+              {currentMilestone.examples.length > 0 && <h4>Example tasks:</h4>}
               <ul>
                 {currentMilestone.examples.map((example, i) => (
                   <li key={i}>{example}</li>
@@ -85,8 +109,14 @@ class Track extends React.Component<Props> {
           ) : null}
         </div>
       </div>
-    )
+    );
+  }
+  generateBackgroundColor(isMilestoneMet, isRequirementMet, track) {
+    if (isMilestoneMet) {
+      return categoryColorScale(track.category);
+    }
+    return undefined;
   }
 }
 
-export default Track
+export default Track;
