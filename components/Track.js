@@ -99,7 +99,7 @@ class Track extends React.Component<Props> {
           {currentMilestone ? (
             <div style={{ flex: 1 }}>
               <h3>{currentMilestone.summary}</h3>
-              <h4>Example tasks:</h4>
+              {currentMilestone.examples.length > 0 && <h4>Example tasks:</h4>}
               <ul>
                 {currentMilestone.examples.map((example, i) => (
                   <li key={i}>{example}</li>

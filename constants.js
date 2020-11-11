@@ -115,6 +115,7 @@ export const tracks: Tracks = {
           "Leave the code base in a better place than before.",
           "Write the scoping document and implement support for rules in Rasa X.",
           "Come up with solutions to implementing HTTPS for IVC.",
+          "Adapt drafts from the research team to production-ready code."
         ],
       },
       {
@@ -165,7 +166,7 @@ export const tracks: Tracks = {
         examples: [
           "Provide technical advice and weight in on technical decisions.",
           "We've hit a roadblock on our implementation of our inline table editor. You are researching technologies, digesting the results for the team to chime in on and drive the discussion to a conclusion.",
-          "Help others improve through code reviews, thorough documentation and technical guidance.",
+          "Raise awareness about security vulnerabilities and make plans to tackle them.",
         ],
       },
       {
@@ -199,14 +200,16 @@ export const tracks: Tracks = {
           "Able to drive and complete new assignments without the need for constant significant guidance from teammates. Deliver projects according to the product spec. Strive to keep estimates up to date and deliver those estimates.",
         examples: [
           "Persistent in face of challenging bugs fixes.",
-          "Deliver X feature according to the product spec and designs. Iterate with product to meet requirements and fix issues along the way.",
+          "Ensure support and fix issues for users after a feature is released."
         ],
       },
       {
         summary:
-          "Delivers work given (yet) unclear requirements within the context of their team. Make sound decisions even in stressful scenarios and with little information.",
+          "Deliver work given (yet) unclear requirements within the context of their team. Drive initiatives that enable the organization's delivery. Make sound decisions even in stressful scenarios and with little information.",
         examples: [
-          "Able to reduce the complexity of projects and processes to meet the product need.",
+          "Set up Poetry and ensure that things work seamlessly for other engineers. Jump in to help when necessary.",
+          "Investigate and fix deployment issues for a customer: SSO, Oracle databses, and avoid future regressions by creating a CI workflow.",
+          "Keep cool in incident responses: investigate, delegate, estimate and ship fixes when a critcal issue impacting a customer comes in.",
           "When the situation calls for a fast delivery, execute on that and wrap up the improvements later.",
           "Responsible for a large-scale project and makes sure that the project is complete by the release date.",
         ],
@@ -249,6 +252,7 @@ export const tracks: Tracks = {
         examples: [
           "Scope out the work for a minor Rasa Open Source release.",
           "Contribute to early discussions on a new feature and propose technical shortcuts to validate assumptions.",
+          "Scope features coming from the research team to include them into our next release(s).",
         ],
       },
       {
@@ -311,6 +315,7 @@ export const tracks: Tracks = {
           "Express opinions in the team and to teammates in an open, respectful and emphathetic manner. After a consensus is reached, commit even if they disagree.",
         examples: [
           "Provide input on discussions around team practices and processes. Alerts the team of current process related issues.",
+          "Propose a change of sprint length to address current shortcomings and get buy-in.",
         ],
       },
       {
@@ -318,6 +323,7 @@ export const tracks: Tracks = {
           "Able to mediate discussions in a team. Take initiative to de-escalate conflicts with compassion, patience and respect. ",
         examples: [
           "Lead discussions around team process improvements, get consensus and buy in to execute.",
+          "Introduce retrospectives to the teams to push for continuous improvements."
         ],
       },
       {
@@ -354,15 +360,16 @@ export const tracks: Tracks = {
       },
       {
         summary:
-          "Help create an engaging, inclusive, and equitable environment in the team.",
+          "Help create an engaging, inclusive, and equitable environment in the team. Participate in DEI programs in the industry.",
         examples: [
           "Increase psychological safety of the entire team.",
           "Use own power and privilege to raise difficult issues of other teammates' behalf.",
+          "Join mentoring programs to support DEI progress in the industry.",
         ],
       },
       {
         summary:
-          "Help create an engaging, inclusive, and equitable environment at a company-wide level and beyond.",
+          "Lead efforts to create an engaging, inclusive, and equitable environment at a company-wide level and beyond.",
         examples: [
           "Actively participate in the DEI group to review our DEI strategy at Rasa.",
           "Lead PyLadies and contribute actively to help underrepresented minorities succeed in the industry.",
@@ -390,6 +397,9 @@ export const tracks: Tracks = {
           "Make themselves available for support and advice for more junior members. Able to give technical feedback and share knowledge with teammates. Able to give behavioral feedback to mentees with manager's support.",
         examples: [
           "Introduce Redux-saga patterns to an engineer through reviews, pair-programming and discussions.",
+          "Set up pair programming sessions with teammates regularly.",
+          "Support onboarding of new team members.",
+          "Prepare and present knowledge sharing sessions to the team.",
         ],
       },
       {
@@ -434,7 +444,7 @@ export const tracks: Tracks = {
         summary: "Contribute and improve the recruiting process.",
         examples: [
           "Shadow new interviewers and help them calibrate their feedback.",
-          "Write new take-home tests that meet the quality bar.",
+          "Write new take-home tests that meet the quality bar. Iterate on the coding interview to make improve in our hiring decisions.",
           "Bring in candidates into the pipeline proactively with a high conversion rate.",
           "Suggest putting our job post on X platform to get more applicants.",
         ],
@@ -468,13 +478,14 @@ export const tracks: Tracks = {
         examples: [
           "Act as a coach for open source contributors guiding them through the development process.",
           "Volunteer as a helper at a PyLadies workshop.",
+          "Presented at a meetup organized by Rasa (~20 audience).",
         ],
       },
       {
         summary:
           "Take a leadership role in evangelising Rasa's work to the industry.",
         examples: [
-          "Represent Rasa at a high-visibility conference.",
+          "Represent Rasa and speak at a high-visibility conference (~100 audience).",
           "Write for the Rasa blog.",
         ],
       },
@@ -506,6 +517,7 @@ export const tracks: Tracks = {
         examples: [
           "Evaluate internal or open source feature requests with respect to our OKRs and blockers, and argue why they should not be made.",
           "Identify all the paths users can take in the code. Work with designer to account for all the use cases.",
+          "Leverage data insights to support product decisions: evaluate if we want to implement Playground for mobile.",
         ],
       },
       {
@@ -524,7 +536,7 @@ export const tracks: Tracks = {
   PRIORITIZATION: {
     displayName: "Prioritization",
     category: "PRODUCT_SENSE",
-    description: "Prioritize and deliver work to create the most impact.",
+    description: "Prioritize and manage work to create the most impact.",
     milestones: [
       {
         summary: "Pick up issues according to the squad's prioritisation.",
